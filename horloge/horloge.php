@@ -13,7 +13,7 @@ Author URI: https://www.kredeum.com
 */
 
 function horloge_script(){
-	printf('<script defer src="/wp-content/plugins/horloge/horloge.js"></script>' );
+	printf('<script defer src="' . WP_PLUGIN_URL . '/horloge/horloge.js"></script>' );
 }
 add_action( 'wp_head', 'horloge_script' );
 
@@ -21,3 +21,4 @@ function horloge() {
 	printf('<li id="horloge"><kredeum-horloge tz="UTC"></li>' );
 }
 add_action( 'wp_meta', 'horloge' );
+echo ABSPATH;

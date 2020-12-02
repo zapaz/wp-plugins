@@ -13,7 +13,7 @@ Author URI: https://www.kredeum.com
 */
 
 function metamask_script(){
-	printf('<script defer src="/wp-content/plugins/metamask/metamask.js"></script>' );
+	printf('<script defer src="' . WP_PLUGIN_URL . '/metamask/metamask.js"></script>' );
 }
 add_action( 'wp_head', 'metamask_script' );
 
