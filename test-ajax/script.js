@@ -1,16 +1,17 @@
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function () {
+  document.querySelector('kredeum-metamask').$on('address', ajaxTestCall);
+});
 
-  $('[btn-ajax-test]').click(function () {
-    var data = {
-      action: 'sample_test',
-      num: $('input[name = num]').val(),
-      security: $('input[name = nonce_field]').val()
-    }
-    console.log('AJAX CALL', data);
+function ajaxTestCall() {
+  var data = {
+    action: 'test',
+    address: document.querySelector('kredeum-metamask').signer,
+    security: document.querySelector('input[name = nonce_field]').getAttribute('value')
+  }
+  console.log('AJAX CALL', data);
 
-    $.post(ajaxurl, data, function (response) {
-      console.log('AJAX RESPONSE', response);
-      $('input[name = test_result]').val(response);
-    })
+  jQuery.post(ajaxurl, data, function (response) {
+    console.log('AJAX RESPONSE', response);
+    jQuery('input[name = result]').val(response);
   })
-})
+}
