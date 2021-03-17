@@ -1,26 +1,17 @@
 <?php
-
-/**
- * @package Metamask
- * @version 0.0.3
- */
 /*
 Plugin Name: Metamask
 Plugin URI: https://wordpress.org/plugins/metamask23_131/
 Description: intégration metamask
 Author: Al P
-Version: 0.0.3
+Version: 0.0.4
 Author URI: https://www.kredeum.com
 */
 
-function metamask_script()
-{
-  printf('<script defer src="' . WP_PLUGIN_URL . '/metamask/metamask.js"></script>');
-}
-add_action('wp_head', 'metamask_script');
+add_action('admin_enqueue_scripts', function () {
+  wp_enqueue_script('metamask', plugin_dir_url(__FILE__) . "metamask.js");
+}, 100);
 
-function metamask()
-{
-  printf('<kredeum-metamask></li>');
-}
-add_action('wp_meta', 'metamask');
+add_action('wp_meta', function () {
+  printf('<kredeum-metamask autoconnect="on"></kredeum-metamask>');
+});
